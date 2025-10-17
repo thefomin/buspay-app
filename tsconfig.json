@@ -6,7 +6,7 @@
 	],
 	"compilerOptions": {
 		"baseUrl": ".",
-		"typeRoots": ["./src/lib", "./node_modules/@types"],
+		"typeRoots": ["src/shared/lib", "./node_modules/@types"],
 		"paths": {
 			"@/*": ["src/*"]
 		}
