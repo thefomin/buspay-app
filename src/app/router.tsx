@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				path: ROUTES.HOME,
-				lazy: () => import("@/features/ticket/ticket-checkout.page"),
+				lazy: () => import("@/features/ticket-checkout/ticket-checkout.page"),
 			},
 		],
 	},
