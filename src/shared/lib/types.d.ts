@@ -48,6 +48,11 @@ interface TelegramWebapp {
 	close: () => void
 	HapticFeedback: TelegramHapticFeedback
 	MainButton: MainButton
+	BackButton: BackButton
+	showScanQrPopup: (
+		options?: ShowScanQrPopupOptions,
+		callback?: ShowScanQrPopupCallback
+	) => void
 }
 
 interface Window {
@@ -72,3 +77,17 @@ interface MainButton {
 	setTextColor: (color: string) => void
 	setParams: (params: Partial<TelegramTheme>) => void
 }
+
+interface BackButton {
+	show: () => void
+	hide: () => void
+	onClick: (callback: () => void) => void
+	offClick: (callback: () => void) => void
+}
+
+interface ShowScanQrPopupOptions {
+	text?: string // текст-подсказка под заголовком Scan QR
+}
+
+// функция обратного вызова, возвращает boolean, чтобы закрыть сканер
+type ShowScanQrPopupCallback = (data: string) => boolean
