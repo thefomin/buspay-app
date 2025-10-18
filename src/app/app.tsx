@@ -1,9 +1,9 @@
-import { Payment } from "./features/payment"
+import { Outlet } from "react-router-dom"
 
 function App() {
 	return (
 		<main>
-			<Payment />
+			<Outlet />
 		</main>
 	)
 }
