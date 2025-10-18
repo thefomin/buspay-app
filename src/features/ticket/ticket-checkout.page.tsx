@@ -38,14 +38,20 @@ const TicketCheckoutPage = () => {
 	const [digits, setDigits] = useState<string>("")
 
 	const handleDigitClick = (digit: number) => {
-		if (digits.length < 6) {
-			telegramState.app?.HapticFeedback.impactOccurred("heavy")
-			setDigits((prev) => prev + digit)
+		if (digits.length >= 6) return
+
+		if (telegramState.app) {
+			telegramState.app.HapticFeedback.impactOccurred("light")
 		}
+		setDigits((prev) => prev + digit)
 	}
 
 	const handleBackspace = () => {
-		telegramState.app?.HapticFeedback.impactOccurred("heavy")
+		if (digits.length === 0) return
+
+		if (telegramState.isApp && telegramState.app) {
+			telegramState.app.HapticFeedback.impactOccurred("heavy")
+		}
 		setDigits((prev) => prev.slice(0, -1))
 	}
 
