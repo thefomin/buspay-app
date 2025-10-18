@@ -1,6 +1,6 @@
 import { useEffect } from "react"
-import { Button } from "../button"
-import { useTelegram } from "../../provider/telegram-provider"
+import { Button } from "../kit/"
+import { useTelegram } from "../../providers/telegram-provider"
 
 type MainButtonProps = {
 	text?: string
@@ -22,8 +22,8 @@ const MainButton = ({
 
 		const btn = telegramState?.app?.MainButton
 		btn.setText(text)
-		if (color) btn.setColor(color)
-		if (textColor) btn.setTextColor(textColor)
+		if (color) btn.color = color
+		if (textColor) btn.textColor = textColor
 		if (onClick) btn.onClick(onClick)
 		btn.show()
 
