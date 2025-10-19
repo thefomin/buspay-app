@@ -2,12 +2,12 @@ import "react-router-dom"
 
 export const ROUTES = {
 	HOME: "/",
-	PAYMENT: "/payment",
+	CARRIER: "/carrier/:carrierId",
 } as const
 
 export type PathParams = {
-	[ROUTES.PAYMENT]: {
-		paymentId: string
+	[ROUTES.CARRIER]: {
+		carrierId: string
 	}
 }
 
