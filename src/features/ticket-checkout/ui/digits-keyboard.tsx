@@ -15,7 +15,7 @@ export const DigitsKeyboard = ({
 	onQrScan,
 }: DigitsKeyboardProps) => {
 	return (
-		<>
+		<div className="grid grid-cols-3 gap-2 w-full items-center bg-muted/75 p-2 rounded-lg">
 			{[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
 				<Button
 					key={num}
@@ -51,6 +51,6 @@ export const DigitsKeyboard = ({
 			>
 				<Delete />
 			</Button>
-		</>
+		</div>
 	)
 }
