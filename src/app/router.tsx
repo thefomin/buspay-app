@@ -15,6 +15,10 @@ export const router = createBrowserRouter([
 				path: ROUTES.HOME,
 				lazy: () => import("@/features/ticket-checkout/ticket-checkout.page"),
 			},
+			{
+				path: ROUTES.CARRIER,
+				lazy: () => import("@/features/bus-carrier/bus-carrier.page"),
+			},
 		],
 	},
 ])
