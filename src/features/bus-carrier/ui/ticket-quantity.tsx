@@ -5,6 +5,7 @@ interface TicketQuantityProps {
 	count: number
 	value: number[]
 	onValueChange: (value: number[]) => void
+	disabled: boolean
 }
 
 const DIGITS = [1, 2, 3, 4, 5]
@@ -14,6 +15,7 @@ export const TicketQuantity = ({
 	count,
 	value,
 	onValueChange,
+	disabled,
 }: TicketQuantityProps) => {
 	return (
 		<div className="flex flex-col items-start w-full py-6 border-b border-muted-foreground/30">
@@ -31,6 +33,7 @@ export const TicketQuantity = ({
 						max={5}
 						step={1}
 						className="w-full"
+						disabled={disabled}
 					/>
 					<div className="mt-2 flex items-center justify-between text-muted-foreground text-xs mx-1.5">
 						{DIGITS.map((ticket, index) => (

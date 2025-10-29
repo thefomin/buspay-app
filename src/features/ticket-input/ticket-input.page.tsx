@@ -1,12 +1,12 @@
-import { DigitsKeyboard, TicketDigits, TicketCheckoutLayout } from "./ui"
-import { useTicketCheckout } from "./hooks/use-ticket-checkout"
+import { DigitsKeyboard, TicketDigits, TicketInputLayout } from "./ui"
+import { useTicketInput } from "./hooks/use-ticket-input"
 
-const TicketCheckoutPage = () => {
+const TicketInputPage = () => {
 	const { digits, handleDigitClick, handleBackspace, handleQrScan } =
-		useTicketCheckout()
+		useTicketInput()
 
 	return (
-		<TicketCheckoutLayout
+		<TicketInputLayout
 			digits={<TicketDigits digits={digits} />}
 			keyboard={
 				<DigitsKeyboard
@@ -20,4 +20,4 @@ const TicketCheckoutPage = () => {
 	)
 }
 
-export const Component = TicketCheckoutPage
+export const Component = TicketInputPage

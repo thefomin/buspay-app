@@ -1,14 +1,14 @@
 import { ScanQrCode } from "lucide-react"
 
-interface TicketCheckoutLayoutProps {
+interface TicketInputLayoutProps {
 	digits: React.ReactNode
 	keyboard: React.ReactNode
 }
 
-export const TicketCheckoutLayout = ({
+export const TicketInputLayout = ({
 	digits,
 	keyboard,
-}: TicketCheckoutLayoutProps) => {
+}: TicketInputLayoutProps) => {
 	return (
 		<section className="bg-[#2a2a2a] py-2 dark:bg-dark h-screen">
 			<div className="container p-2 mx-auto h-full flex flex-col justify-between">
