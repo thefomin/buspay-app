@@ -8,6 +8,7 @@ import { useCarrierQuery } from "./hooks/use-carrier-query"
 import { Loading } from "@/shared/ui/kit"
 import { usePayment, type PaymentDto } from "./hooks/use-payment"
 import { useTelegram } from "@/shared/providers/telegram-provider"
+import { CONFIG_ENV } from "@/shared/config/env"
 
 const BusCarrierPage = () => {
 	const params = useParams<{ carrierId: string }>()
@@ -21,6 +22,7 @@ const BusCarrierPage = () => {
 	const { telegramState } = useTelegram()
 	const { ticketPayment } = usePayment()
 	const navigate = useNavigate()
+
 	//ставим useCallback чтобы кнопка "назад" не ре-рендерилась каждый раз после изменения состояния
 	//получается, мы обернули функцию в калбек и теперь у нас onClick в BackButton не будет ре-рендерится
 	const handleBack = useCallback(() => {
@@ -33,10 +35,10 @@ const BusCarrierPage = () => {
 			amount: totalPrice,
 			telegramUser: telegramState.isApp
 				? telegramState.app?.initDataUnsafe.user.username
-				: "@whokilledravey",
+				: CONFIG_ENV.DEV_TG_ID,
 			chatId: telegramState.isApp
 				? telegramState.app?.initDataUnsafe.user.username
-				: "204688184",
+				: CONFIG_ENV.DEV_TG_ID,
 		}
 		ticketPayment(data)
 	}
