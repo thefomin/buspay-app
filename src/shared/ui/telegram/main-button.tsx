@@ -36,7 +36,7 @@ const MainButton = ({
 
 	if (!telegramState.isApp) {
 		return (
-			<div className="absolute bottom-0 w-full px-3 py-2 bg-muted-foreground/20">
+			<div className="fixed bottom-0 w-full px-3 py-2 bg-muted-foreground/20">
 				<Button
 					onClick={onClick}
 					className="w-full rounded-lg h-[50px] text-[16px] font-semibold bg-red-600 hover:bg-red-700"
