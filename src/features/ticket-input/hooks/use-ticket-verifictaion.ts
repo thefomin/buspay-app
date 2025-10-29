@@ -1,4 +1,4 @@
-import { CONFIG_ENV } from "@/shared/config/url"
+import { CONFIG_ENV } from "@/shared/config/env"
 import { useNavigate } from "react-router-dom"
 
 interface TicketResponse {
