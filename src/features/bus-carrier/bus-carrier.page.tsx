@@ -1,19 +1,22 @@
-import { Bus, User, Cable as Ruble } from "lucide-react"
 import { useCallback, useState } from "react"
-import { BusCarrierLayout, InfoRow, TicketQuantity } from "./ui"
-import { MainButton } from "@/shared/ui/telegram/main-button"
-import { BackButton } from "@/shared/ui/telegram/back-button"
 import { useNavigate, useParams } from "react-router-dom"
-import { useCarrierQuery } from "./hooks/use-carrier-query"
-import { Loading } from "@/shared/ui/kit"
-import { usePayment, type PaymentDto } from "./hooks/use-payment"
+
 import { useTelegram } from "@/shared/providers/telegram-provider"
 import { CONFIG_ENV } from "@/shared/config/env"
 
+import { Loading } from "@/shared/ui/kit"
+import { MainButton } from "@/shared/ui/telegram/main-button"
+import { BackButton } from "@/shared/ui/telegram/back-button"
+
+import { BusCarrierLayout, TicketQuantity } from "./ui"
+import { useCarrierQuery } from "./hooks/use-carrier-query"
+import { usePayment, type PaymentDto } from "./hooks/use-payment"
+import { CarrierDetails } from "./ui/carrier-details"
+import type { PathParams, ROUTES } from "@/shared/config"
+
 const BusCarrierPage = () => {
-	const params = useParams<{ carrierId: string }>()
-	const carrierId = params.carrierId || ""
-	const { data, loading, error } = useCarrierQuery(carrierId)
+	const params = useParams<PathParams[typeof ROUTES.CARRIER]>()
+	const { data, loading, error } = useCarrierQuery(params.carrierId || "")
 
 	const [ticketCount, setTicketCount] = useState(1)
 	const [ticketPrice] = useState(data?.price || 48)
@@ -31,7 +34,7 @@ const BusCarrierPage = () => {
 
 	const handlePayment = () => {
 		const data: PaymentDto = {
-			code: carrierId,
+			code: params.carrierId || "",
 			amount: totalPrice,
 			telegramUser: telegramState.isApp
 				? telegramState.app?.initDataUnsafe.user.username
@@ -69,25 +72,7 @@ const BusCarrierPage = () => {
 								<Loading />
 							</div>
 						)}
-						{data && (
-							<>
-								<InfoRow
-									icon={<User className="w-6 h-6" />}
-									label="Перевозчик"
-									value={data.carrier}
-								/>
-								<InfoRow
-									icon={<Bus className="w-6 h-6" />}
-									label={`${data.busNumber}, ${data.route}`}
-									value={data.regNumber}
-								/>
-								<InfoRow
-									icon={<Ruble className="w-6 h-6" />}
-									label="Тариф"
-									value={`Полный - ${data.price.toFixed(2)} ₽`}
-								/>
-							</>
-						)}
+						{data && <CarrierDetails data={data} />}
 					</>
 				}
 			/>

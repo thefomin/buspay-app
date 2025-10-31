@@ -1,4 +1,5 @@
 import { CONFIG_ENV } from "@/shared/config/env"
+import type { ReceiptResponse } from "@/shared/types/responses.type"
 import { useNavigate } from "react-router-dom"
 
 export interface PaymentDto {
@@ -6,12 +7,6 @@ export interface PaymentDto {
 	amount: number
 	telegramUser?: string
 	chatId?: string
-}
-
-interface ReceiptResponse {
-	ticketId: string
-	amount: number
-	paidAt: string
 }
 
 export const usePayment = () => {
@@ -32,7 +27,7 @@ export const usePayment = () => {
 
 		const data: ReceiptResponse = await response.json()
 		if (data) {
-			navigate(`/carrier/${data.ticketId}`)
+			navigate(`/receipt/${data.id}`)
 		}
 	}
 

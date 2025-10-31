@@ -1,14 +1,6 @@
 import { CONFIG_ENV } from "@/shared/config/env"
+import type { TicketResponse } from "@/shared/types/responses.type"
 import { useEffect, useState } from "react"
-
-interface TicketResponse {
-	code: string
-	carrier: string
-	busNumber: string
-	route: string
-	regNumber: string
-	price: number
-}
 
 interface CarrierState {
 	data: TicketResponse | null
