@@ -11,4 +11,7 @@ export default defineConfig({
 			"@": path.resolve(__dirname, "./src"),
 		},
 	},
+	server: {
+		allowedHosts: ["qdxwvk-91-220-87-45.ru.tuna.am"],
+	},
 })
