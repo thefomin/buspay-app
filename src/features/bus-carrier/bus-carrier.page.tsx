@@ -46,6 +46,9 @@ const BusCarrierPage = () => {
 	return (
 		<>
 			<BackButton onClick={handleBack} text="Назад" />
+			{telegramState.isApp
+				? telegramState.app?.initDataUnsafe.user.username
+				: CONFIG_ENV.DEV_TG_USERNAME}
 			<BusCarrierLayout
 				title="Данные билета"
 				quantity={
