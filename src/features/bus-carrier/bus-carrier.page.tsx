@@ -37,7 +37,7 @@ const BusCarrierPage = () => {
 				? telegramState.app?.initDataUnsafe.user.username
 				: CONFIG_ENV.DEV_TG_ID,
 			chatId: telegramState.isApp
-				? telegramState.app?.initDataUnsafe.user.username
+				? telegramState.app?.initDataUnsafe.user.id
 				: CONFIG_ENV.DEV_TG_ID,
 		}
 		ticketPayment(data)
@@ -46,9 +46,6 @@ const BusCarrierPage = () => {
 	return (
 		<>
 			<BackButton onClick={handleBack} text="Назад" />
-			{telegramState.isApp
-				? telegramState.app?.initDataUnsafe.user.username
-				: CONFIG_ENV.DEV_TG_USERNAME}
 			<BusCarrierLayout
 				title="Данные билета"
 				quantity={
