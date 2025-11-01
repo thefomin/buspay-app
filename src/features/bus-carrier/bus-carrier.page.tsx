@@ -14,12 +14,14 @@ import { usePayment, type PaymentDto } from "./hooks/use-payment"
 import { CarrierDetails } from "./ui/carrier-details"
 import type { PathParams, ROUTES } from "@/shared/config"
 
+
+
 const BusCarrierPage = () => {
 	const params = useParams<PathParams[typeof ROUTES.CARRIER]>()
 	const { data, loading, error } = useCarrierQuery(params.carrierId || "")
 
 	const [ticketCount, setTicketCount] = useState(1)
-	const [ticketPrice] = useState(data?.price || 48)
+	const ticketPrice = data?.price ?? 48
 	const totalPrice = ticketCount * ticketPrice
 
 	const { telegramState } = useTelegram()
