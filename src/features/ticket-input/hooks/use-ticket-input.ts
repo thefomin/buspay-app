@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useTelegram } from "@/shared/providers/telegram-provider"
-import { useTicketVerification } from "./use-ticket-verifictaion"
+import { useTicketVerification } from "./use-ticket-verification"
 
 export const useTicketInput = () => {
 	const { telegramState } = useTelegram()
