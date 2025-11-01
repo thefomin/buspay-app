@@ -1,4 +1,4 @@
-import { formatDate, formatTime } from "@/shared/lib/formatDate"
+import { formatDate, formatTime } from "@/shared/lib/format-date"
 import type { ReceiptResponse } from "@/shared/types/responses.type"
 import { InfoRow } from "@/shared/ui"
 import { Bus, User, RussianRuble, CalendarDays, Clock } from "lucide-react"
